@@ -35,7 +35,7 @@ CROP = 640
 
 def pipeline_figure():
     steps = [("H-alpha frame\n2048 x 2048", "#dfe7f5"), ("disk mean/std\nnormalisation", "#dfe7f5"),
-             ("5 x U-Net\n(ResNet-34)\n4 flips each", "#f5e6d3"), ("mean\nprobability\nmap", "#f5e6d3"),
+             ("2 x 5 U-Nets\nResNet-34 and\nResNeXt-50\n4 flips each", "#f5e6d3"), ("mean\nprobability\nmap", "#f5e6d3"),
              ("connected\nregions of\np > 0.25", "#e2f0d9"), ("keep rule\narea, mean p\n(tuned on PQ)", "#e2f0d9"),
              ("disjoint\ninstance masks\n(COCO RLE)", "#e2f0d9")]
     fig, ax = plt.subplots(figsize=(7.2, 1.25))

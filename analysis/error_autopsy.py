@@ -17,7 +17,7 @@ from pycocotools import mask as mu
 H = W = 2048
 MIN_AREA = 320
 MEANS = (0.0, 0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.93)
-BASE_T, BASE_MEAN = 0.25, 0.85
+BASE_T, BASE_MEAN = 0.25, 0.83   # the final rule (sfs.decision.Rule); 0.85 for the ResNet-34-only maps
 K3 = np.ones((3, 3), np.uint8)
 
 

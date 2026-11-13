@@ -2,7 +2,7 @@
 
     python scripts/predict.py --images <folder with .jpg frames> --out submission.csv
 
-Uses the five fold models in weights/ (mean of their probability maps), then the instance rule.
+Uses the ten models in weights/ (two encoders x five folds; mean of their probability maps), then the instance rule.
 """
 from __future__ import annotations
 
@@ -30,9 +30,9 @@ def main():
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if device.type == "cpu":
-        print("no GPU found: running on CPU (about one minute per frame)")
-    models = load_models(args.weights, device)
-    rows = segment_folder(args.images, models, device, limit=args.limit, maps_dir=args.maps)
+        print("no GPU found: running on CPU (about two minutes per frame)")
+    families = load_models(args.weights, device)
+    rows = segment_folder(args.images, families, device, limit=args.limit, maps_dir=args.maps)
     write_submission(args.out, rows)
     print(f"wrote {args.out}: {len(rows)} filaments")
 

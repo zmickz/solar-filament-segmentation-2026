@@ -8,11 +8,14 @@ import cv2
 
 from .data import disk_mask, list_frames, read_gray
 from .decision import Rule, instance_rles, instances
-from .infer import predict_map
+from .infer import predict_ensemble_map
 from .model import load_model
 
 
-def load_models(weight_dir, device, encoder: str = "resnet34"):
+ENCODERS = ("resnet34", "resnext50_32x4d")   # the two model families of the final ensemble
+
+
+def load_family(weight_dir, device, encoder: str):
     """Load every fold model (unet_<encoder>_fold*.pt) found in weight_dir."""
     files = sorted(Path(weight_dir).glob(f"unet_{encoder}_fold*.pt"))
     if not files:
@@ -20,10 +23,15 @@ def load_models(weight_dir, device, encoder: str = "resnet34"):
     return [load_model(f, device, encoder) for f in files]
 
 
-def segment_folder(image_dir, models, device, rule: Rule = Rule(), limit: int = 0, maps_dir=None, log=print):
+def load_models(weight_dir, device, encoders=ENCODERS):
+    """-> one list of fold models per encoder (the final solution: 2 families x 5 folds)."""
+    return [load_family(weight_dir, device, e) for e in encoders]
+
+
+def segment_folder(image_dir, families, device, rule: Rule = Rule(), limit: int = 0, maps_dir=None, log=print):
     """Segment the frames of image_dir in file-name order.
 
-    Returns the submission rows [(filament_id, RLE counts string)], filament_id = <frame stem>_<n>.
+    families = load_models(...). Returns the submission rows [(filament_id, RLE counts string)], filament_id = <frame stem>_<n>.
     If maps_dir is given, the probability map of each frame is saved there as an 8-bit PNG.
     """
     files = list_frames(image_dir)
@@ -34,7 +42,7 @@ def segment_folder(image_dir, models, device, rule: Rule = Rule(), limit: int = 
     disk, rows, t0 = disk_mask(), [], time.time()
     for n, path in enumerate(files, 1):
         stem = Path(path).stem
-        pm = predict_map(models, read_gray(path), device, disk)
+        pm = predict_ensemble_map(families, read_gray(path), device, disk)
         if maps_dir:
             cv2.imwrite(str(Path(maps_dir) / f"{stem}.png"), pm)
         lab, ids = instances(pm, rule)

@@ -20,7 +20,7 @@ class Rule:
     t_lo: float = 0.25      # a pixel belongs to a region when p > t_lo
     t_hi: float = 0.99      # the region must reach this probability somewhere
     min_area: float = 320   # pixels
-    min_mean: float = 0.85  # mean probability inside the region
+    min_mean: float = 0.83  # mean probability inside the region
 
 
 def candidates(pm: np.ndarray, t_lo: float):

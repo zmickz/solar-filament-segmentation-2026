@@ -29,3 +29,14 @@ def predict_map(models, frame: np.ndarray, device, disk: np.ndarray | None = Non
     stats = frame_stats(frame, disk_mask() if disk is None else disk)
     maps = [predict_one_model(m, frame, stats, device) for m in models]
     return np.round(np.mean(np.stack(maps).astype(np.float32), 0)).astype(np.uint8)
+
+
+def predict_ensemble_map(families, frame: np.ndarray, device, disk: np.ndarray | None = None) -> np.ndarray:
+    """Mean of the per-family maps (each family = the five fold models of one encoder) as uint8.
+
+    Each family map is rounded to 8 bits first, exactly as the training runs stored them,
+    so the result matches the maps the submitted file was built from.
+    """
+    disk = disk_mask() if disk is None else disk
+    maps = [predict_map(models, frame, device, disk) for models in families]
+    return np.clip(np.rint(np.mean(np.stack(maps).astype(np.float32), 0)), 0, 255).astype(np.uint8)

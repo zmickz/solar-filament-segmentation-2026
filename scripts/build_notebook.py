@@ -10,12 +10,13 @@ from pathlib import Path
 CELLS = [
     ("md", """# Solar filament segmentation — end-to-end demo
 
-This notebook loads the five trained U-Net models stored in `weights/`, segments the test frames,
+This notebook loads the ten trained U-Net models stored in `weights/` (two encoders x five folds),
+segments the test frames,
 writes `submission.csv` in the competition format and compares it with the file we submitted to
 Kaggle (`artifacts/submission_kaggle.csv`). No training happens here.
 
 Run it from the repository root. On a GPU the 180 test frames take a few minutes; on CPU about
-one minute per frame, so set `LIMIT` to a small number for a quick look."""),
+four minutes per frame, so set `SFS_LIMIT` to a small number for a quick look."""),
     ("code", """import glob, json, os, sys, time
 from pathlib import Path
 
@@ -32,7 +33,7 @@ sys.path.insert(0, str(REPO))
 
 from sfs.data import list_frames, read_gray
 from sfs.decision import Rule, write_submission
-from sfs.pipeline import load_models, segment_folder
+from sfs.pipeline import ENCODERS, load_models, segment_folder
 
 # Folder with the test frames: set SFS_TEST_IMAGES, or attach the competition data on Kaggle.
 hits = glob.glob("/kaggle/input/**/test/test_images", recursive=True)
@@ -43,21 +44,23 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("frames:", IMAGES, "| device:", device, "| limit:", LIMIT or "all")"""),
     ("md", """## 1. Load the weights
 
-Five models, one per cross-validation fold (U-Net, ResNet-34 encoder, 1 input channel).
-The files are 16-bit state dicts of 49 MB each."""),
-    ("code", """models = load_models(REPO / "weights", device)
-n_par = sum(p.numel() for p in models[0].parameters())
-print(f"{len(models)} models, {n_par / 1e6:.1f} M parameters each")
+Two families of five models, one model per cross-validation fold (U-Net, 1 input channel):
+ResNet-34 encoder (49 MB per 16-bit file) and ResNeXt-50 32x4d encoder (64 MB per file)."""),
+    ("code", """families = load_models(REPO / "weights", device)
+for enc, fam in zip(ENCODERS, families):
+    n_par = sum(p.numel() for p in fam[0].parameters())
+    print(f"{len(fam)} x U-Net {enc}: {n_par / 1e6:.1f} M parameters each")
 rule = Rule()
 print(rule)"""),
     ("md", """## 2. Segment the frames
 
 For every frame: normalise by the mean and standard deviation of the solar disk, predict at the
-native 2048 x 2048 resolution with 4 flips, average the five models, then keep the connected
+native 2048 x 2048 resolution with 4 flips, average the five models of each family, average the two
+families, then keep the connected
 regions of `p > t_lo` that satisfy the rule. Regions are pixel-disjoint by construction."""),
     ("code", """t0 = time.time()
 MAPS = OUT / "demo_maps"
-rows = segment_folder(IMAGES, models, device, rule, limit=LIMIT, maps_dir=MAPS)
+rows = segment_folder(IMAGES, families, device, rule, limit=LIMIT, maps_dir=MAPS)
 write_submission(OUT / "submission.csv", rows)
 frames = sorted({r[0].rsplit("_", 1)[0] for r in rows})
 n_done = len(list(MAPS.glob("*.png")))
@@ -65,7 +68,7 @@ print(f"{len(rows)} filaments on {len(frames)} frames; {(time.time() - t0) / max
     ("md", """## 3. Compare with the file submitted to Kaggle
 
 The submitted file was produced on a Kaggle GPU with mixed precision. Other hardware can move a
-probability by one grey level (1/255), so we report both exact row equality and mask agreement."""),
+probability by a grey level or two (1/255), so we report both exact row equality and mask agreement."""),
     ("code", """from pycocotools import mask as mu
 
 def read_rows(path):
@@ -102,8 +105,8 @@ for ax, stem in zip(axes[0], show):
 plt.tight_layout(); plt.show()"""),
     ("md", """## 5. Validation numbers
 
-`artifacts/oof_maps.zip` holds, for every training frame, the map predicted by the fold model that
-never saw it. `scripts/evaluate_oof.py` scores those maps with the competition metric; its saved
+`artifacts/oof_maps.zip` holds, for every training frame, the ensemble map predicted by the fold models
+that never saw it. `scripts/evaluate_oof.py` scores those maps with the competition metric; its saved
 output is shown here (re-run the script with the MAGFiLO annotation file to reproduce it)."""),
     ("code", """ev = json.load(open(REPO / "artifacts" / "oof_evaluation.json"))
 for k in ("frames", "annotated_filaments", "predicted_filaments", "pq", "pq_ci95", "sq", "rq", "pq_per_fold",
