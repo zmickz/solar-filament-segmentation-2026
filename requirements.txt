@@ -1,0 +1,14 @@
+# Python >= 3.10. Lower bounds; the versions in the comments are the ones the repository was verified with
+# (inference and evaluation). The weights were trained on Kaggle with torch 2.11.0+cu130.
+torch>=2.4                    # verified: 2.15.0
+timm>=1.0                     # verified: 1.0.31
+numpy>=1.26                   # verified: 2.5.4
+opencv-python-headless>=4.8   # verified: 5.0.0.93
+pycocotools>=2.0.8            # verified: 2.0.11
+matplotlib>=3.8               # verified: 3.11.2
+# notebook
+nbformat>=5.9                 # verified: 5.11.1
+nbclient>=0.10                # verified: 0.11.0
+ipykernel>=6.29               # verified: 7.4.0
+# only for analysis/selector_expected_pq.py
+scikit-learn>=1.4             # verified: 1.9.1

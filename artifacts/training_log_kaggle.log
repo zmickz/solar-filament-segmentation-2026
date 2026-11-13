@@ -1,0 +1,292 @@
+k2.py sha256 c6614c3b59bc3d1943a1a7e419e5c8dab31f932af00459c23c224a8964fc6498
+[     13s] torch 2.11.0+cu130, GPUs 2, H=2048, crop=640, budget/fold 2400s, folds 5
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[     32s] cache 0/887
+[     46s] cache 200/887
+[     62s] cache 400/887
+[     76s] cache 600/887
+[     86s] cache 800/887
+[     88s] cache done: 707 train frames, 180 test frames, folds [145, 135, 145, 140, 142]
+[     88s] smoke rehearsal
+[     88s] started fold 0 on gpu 0 (smoke)
+[     88s] started fold 1 on gpu 1 (smoke)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[fold 0 smoke] it 4/12 loss 1.5064 lr 4.88e-04 12s
+[fold 1 smoke] it 4/12 loss 1.5288 lr 4.88e-04 12s
+[fold 0 smoke] it 8/12 loss 1.4538 lr 2.55e-04 14s
+[fold 1 smoke] it 8/12 loss 1.4700 lr 2.55e-04 14s
+[fold 0 smoke] it 12/12 loss 1.4266 lr 2.20e-05 15s
+[fold 0 smoke] trained 12 iterations in 15s, saved smoke_fold0.pt
+[fold 1 smoke] it 12/12 loss 1.4386 lr 2.20e-05 15s
+[fold 1 smoke] trained 12 iterations in 15s, saved smoke_fold1.pt
+[fold 0 smoke] out-of-fold maps: 2 frames, pixel Dice@0.5 0.0000
+[fold 1 smoke] out-of-fold maps: 2 frames, pixel Dice@0.5 0.0000
+[fold 0 smoke] test maps: 2 frames, total 17s
+[fold 1 smoke] test maps: 2 frames, total 17s
+[    122s] fold 0 finished
+[    122s] fold 1 finished
+[    122s] started fold 2 on gpu 0 (smoke)
+[    122s] started fold 3 on gpu 1 (smoke)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[fold 3 smoke] it 4/12 loss 1.6503 lr 4.88e-04 2s
+[fold 2 smoke] it 4/12 loss 1.6773 lr 4.88e-04 2s
+[fold 3 smoke] it 8/12 loss 1.5875 lr 2.55e-04 3s
+[fold 2 smoke] it 8/12 loss 1.6302 lr 2.55e-04 3s
+[fold 3 smoke] it 12/12 loss 1.5633 lr 2.20e-05 5s
+[fold 3 smoke] trained 12 iterations in 5s, saved smoke_fold3.pt
+[fold 2 smoke] it 12/12 loss 1.6005 lr 2.20e-05 5s
+[fold 2 smoke] trained 12 iterations in 5s, saved smoke_fold2.pt
+[fold 3 smoke] out-of-fold maps: 2 frames, pixel Dice@0.5 0.0000
+[fold 2 smoke] out-of-fold maps: 2 frames, pixel Dice@0.5 0.0044
+[fold 3 smoke] test maps: 2 frames, total 7s
+[fold 2 smoke] test maps: 2 frames, total 7s
+[    136s] fold 2 finished
+[    136s] fold 3 finished
+[    136s] started fold 4 on gpu 0 (smoke)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[fold 4 smoke] it 4/12 loss 1.7543 lr 4.88e-04 2s
+[fold 4 smoke] it 8/12 loss 1.6814 lr 2.55e-04 3s
+[fold 4 smoke] it 12/12 loss 1.6497 lr 2.20e-05 5s
+[fold 4 smoke] trained 12 iterations in 5s, saved smoke_fold4.pt
+[fold 4 smoke] out-of-fold maps: 2 frames, pixel Dice@0.5 0.0023
+[fold 4 smoke] test maps: 2 frames, total 7s
+[    150s] fold 4 finished
+[    150s] decision layer: scoring candidates on 10 out-of-fold frames
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 60, 'min_mean': 0.0, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(13.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 60, 'min_mean': 0.55, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(0.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 60, 'min_mean': 0.65, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(0.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 60, 'min_mean': 0.75, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(0.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 60, 'min_mean': 0.85, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(0.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 120, 'min_mean': 0.0, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(13.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 120, 'min_mean': 0.55, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(0.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 120, 'min_mean': 0.65, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(0.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 120, 'min_mean': 0.75, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(0.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 120, 'min_mean': 0.85, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(0.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 200, 'min_mean': 0.0, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(13.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    163s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 200, 'min_mean': 0.55, 'pq': 0.0, 'sq': 0.0, 'tp': np.float64(0.0), 'fp': np.float64(0.0), 'fn': np.float64(69.0)} [0.0, 0.0, 0.0, 0.0, 0.0]
+[    164s] submission.csv: 2 filaments on 2/180 frames; out-of-fold PQ 0.0000 with rule 0.25/0.5/60/0.0
+[    164s] smoke rehearsal passed
+[    164s] started fold 0 on gpu 0
+[    164s] started fold 1 on gpu 1
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[fold 0] 3.84 it/s -> 9213 iterations planned
+[fold 1] 3.75 it/s -> 8997 iterations planned
+[fold 0] it 250/9213 loss 1.4366 lr 4.17e-04 68s
+[fold 1] it 250/8997 loss 1.5678 lr 4.17e-04 70s
+[fold 0] it 500/9213 loss 1.2055 lr 4.99e-04 137s
+[fold 1] it 500/8997 loss 1.2847 lr 4.99e-04 145s
+[fold 0] it 750/9213 loss 1.0226 lr 4.97e-04 205s
+[fold 1] it 750/8997 loss 1.0527 lr 4.97e-04 219s
+[fold 0] it 1000/9213 loss 0.8612 lr 4.93e-04 274s
+[fold 1] it 1000/8997 loss 0.8715 lr 4.92e-04 293s
+[fold 0] it 1250/9213 loss 0.7030 lr 4.86e-04 343s
+[fold 1] it 1250/8997 loss 0.6856 lr 4.86e-04 368s
+[fold 0] it 1500/9213 loss 0.5791 lr 4.78e-04 411s
+[fold 1] it 1500/8997 loss 0.5579 lr 4.77e-04 443s
+[fold 0] it 1750/9213 loss 0.5255 lr 4.69e-04 480s
+[fold 1] it 1750/8997 loss 0.5080 lr 4.67e-04 517s
+[fold 0] it 2000/9213 loss 0.5035 lr 4.57e-04 549s
+[fold 1] it 2000/8997 loss 0.4921 lr 4.55e-04 591s
+[fold 0] it 2250/9213 loss 0.4839 lr 4.44e-04 617s
+[fold 1] it 2250/8997 loss 0.4919 lr 4.42e-04 666s
+[fold 0] it 2500/9213 loss 0.4688 lr 4.30e-04 686s
+[fold 1] it 2500/8997 loss 0.4842 lr 4.27e-04 740s
+[fold 0] it 2750/9213 loss 0.4717 lr 4.14e-04 754s
+[fold 1] it 2750/8997 loss 0.4484 lr 4.10e-04 815s
+[fold 0] it 3000/9213 loss 0.4495 lr 3.97e-04 823s
+[fold 1] it 3000/8997 loss 0.4604 lr 3.92e-04 890s
+[fold 0] it 3250/9213 loss 0.4132 lr 3.79e-04 891s
+[fold 0] it 3500/9213 loss 0.4005 lr 3.60e-04 960s
+[fold 1] it 3250/8997 loss 0.4671 lr 3.74e-04 964s
+[fold 0] it 3750/9213 loss 0.4082 lr 3.40e-04 1028s
+[fold 1] it 3500/8997 loss 0.4417 lr 3.54e-04 1039s
+[fold 0] it 4000/9213 loss 0.3959 lr 3.20e-04 1097s
+[fold 1] it 3750/8997 loss 0.3988 lr 3.33e-04 1113s
+[fold 0] it 4250/9213 loss 0.3950 lr 2.99e-04 1165s
+[fold 1] it 4000/8997 loss 0.3784 lr 3.12e-04 1188s
+[fold 0] it 4500/9213 loss 0.3965 lr 2.77e-04 1234s
+[fold 1] it 4250/8997 loss 0.3817 lr 2.90e-04 1262s
+[fold 0] it 4750/9213 loss 0.3881 lr 2.56e-04 1302s
+[fold 1] it 4500/8997 loss 0.3961 lr 2.68e-04 1336s
+[fold 0] it 5000/9213 loss 0.3732 lr 2.34e-04 1370s
+[fold 1] it 4750/8997 loss 0.3718 lr 2.46e-04 1411s
+[fold 0] it 5250/9213 loss 0.3687 lr 2.13e-04 1438s
+[fold 1] it 5000/8997 loss 0.3895 lr 2.24e-04 1485s
+[fold 0] it 5500/9213 loss 0.3802 lr 1.92e-04 1506s
+[fold 1] it 5250/8997 loss 0.3689 lr 2.02e-04 1559s
+[fold 0] it 5750/9213 loss 0.3861 lr 1.71e-04 1574s
+[fold 1] it 5500/8997 loss 0.3685 lr 1.81e-04 1633s
+[fold 0] it 6000/9213 loss 0.3665 lr 1.51e-04 1642s
+[fold 1] it 5750/8997 loss 0.3659 lr 1.60e-04 1707s
+[fold 0] it 6250/9213 loss 0.3652 lr 1.32e-04 1710s
+[fold 0] it 6500/9213 loss 0.3801 lr 1.14e-04 1778s
+[fold 1] it 6000/8997 loss 0.3650 lr 1.40e-04 1780s
+[fold 0] it 6750/9213 loss 0.3589 lr 9.67e-05 1846s
+[fold 1] it 6250/8997 loss 0.3681 lr 1.21e-04 1854s
+[fold 0] it 7000/9213 loss 0.3660 lr 8.09e-05 1914s
+[fold 1] it 6500/8997 loss 0.3689 lr 1.03e-04 1928s
+[fold 0] it 7250/9213 loss 0.3607 lr 6.64e-05 1982s
+[fold 1] it 6750/8997 loss 0.3506 lr 8.64e-05 2002s
+[fold 0] it 7500/9213 loss 0.3590 lr 5.34e-05 2050s
+[fold 1] it 7000/8997 loss 0.3561 lr 7.11e-05 2075s
+[fold 0] it 7750/9213 loss 0.3690 lr 4.19e-05 2118s
+[fold 1] it 7250/8997 loss 0.3501 lr 5.72e-05 2149s
+[fold 0] it 8000/9213 loss 0.3669 lr 3.21e-05 2186s
+[fold 1] it 7500/8997 loss 0.3490 lr 4.50e-05 2223s
+[fold 0] it 8250/9213 loss 0.3603 lr 2.40e-05 2254s
+[fold 1] it 7750/8997 loss 0.3548 lr 3.45e-05 2297s
+[fold 0] it 8500/9213 loss 0.3504 lr 1.77e-05 2322s
+[fold 1] it 8000/8997 loss 0.3514 lr 2.57e-05 2371s
+[fold 0] it 8750/9213 loss 0.3608 lr 1.33e-05 2391s
+[fold 1] it 8250/8997 loss 0.3683 lr 1.89e-05 2445s
+[fold 0] it 9000/9213 loss 0.3629 lr 1.07e-05 2459s
+[fold 0] trained 9213 iterations in 2517s, saved unet_resnet34_fold0.pt
+[fold 1] it 8500/8997 loss 0.3515 lr 1.40e-05 2519s
+[fold 1] it 8750/8997 loss 0.3532 lr 1.10e-05 2593s
+[fold 0] out-of-fold maps: 145 frames, pixel Dice@0.5 0.7102
+[fold 1] trained 8997 iterations in 2666s, saved unet_resnet34_fold1.pt
+[fold 0] test maps: 180 frames, total 2687s
+[   2864s] fold 0 finished
+[   2864s] started fold 2 on gpu 0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[fold 2] 3.71 it/s -> 8894 iterations planned
+[fold 1] out-of-fold maps: 135 frames, pixel Dice@0.5 0.7223
+[fold 2] it 250/8894 loss 1.4378 lr 4.17e-04 69s
+[fold 2] it 500/8894 loss 1.1577 lr 4.99e-04 137s
+[fold 1] test maps: 180 frames, total 2843s
+[   3014s] fold 1 finished
+[   3014s] started fold 3 on gpu 1
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[fold 3] 3.37 it/s -> 8088 iterations planned
+[fold 2] it 750/8894 loss 0.9488 lr 4.97e-04 206s
+[fold 3] it 250/8088 loss 1.4799 lr 4.17e-04 75s
+[fold 2] it 1000/8894 loss 0.7621 lr 4.92e-04 274s
+[fold 3] it 500/8088 loss 1.2376 lr 4.99e-04 149s
+[fold 2] it 1250/8894 loss 0.5979 lr 4.85e-04 343s
+[fold 3] it 750/8088 loss 1.0535 lr 4.96e-04 223s
+[fold 2] it 1500/8894 loss 0.5171 lr 4.77e-04 412s
+[fold 3] it 1000/8088 loss 0.8955 lr 4.90e-04 296s
+[fold 2] it 1750/8894 loss 0.4829 lr 4.66e-04 480s
+[fold 3] it 1250/8088 loss 0.7327 lr 4.82e-04 370s
+[fold 2] it 2000/8894 loss 0.4751 lr 4.54e-04 549s
+[fold 3] it 1500/8088 loss 0.6064 lr 4.72e-04 444s
+[fold 2] it 2250/8894 loss 0.4831 lr 4.40e-04 618s
+[fold 3] it 1750/8088 loss 0.5423 lr 4.59e-04 518s
+[fold 2] it 2500/8894 loss 0.4575 lr 4.25e-04 686s
+[fold 3] it 2000/8088 loss 0.5057 lr 4.45e-04 591s
+[fold 2] it 2750/8894 loss 0.4633 lr 4.08e-04 755s
+[fold 3] it 2250/8088 loss 0.4900 lr 4.28e-04 665s
+[fold 2] it 3000/8894 loss 0.4513 lr 3.90e-04 823s
+[fold 3] it 2500/8088 loss 0.4746 lr 4.10e-04 739s
+[fold 2] it 3250/8894 loss 0.4088 lr 3.71e-04 892s
+[fold 2] it 3500/8894 loss 0.4164 lr 3.51e-04 960s
+[fold 3] it 2750/8088 loss 0.4676 lr 3.90e-04 812s
+[fold 2] it 3750/8894 loss 0.3845 lr 3.30e-04 1029s
+[fold 3] it 3000/8088 loss 0.4635 lr 3.69e-04 886s
+[fold 2] it 4000/8894 loss 0.4161 lr 3.08e-04 1097s
+[fold 3] it 3250/8088 loss 0.4300 lr 3.46e-04 960s
+[fold 2] it 4250/8894 loss 0.3928 lr 2.86e-04 1165s
+[fold 3] it 3500/8088 loss 0.3977 lr 3.23e-04 1034s
+[fold 2] it 4500/8894 loss 0.3910 lr 2.64e-04 1233s
+[fold 3] it 3750/8088 loss 0.3962 lr 2.99e-04 1108s
+[fold 2] it 4750/8894 loss 0.3901 lr 2.41e-04 1302s
+[fold 3] it 4000/8088 loss 0.4235 lr 2.74e-04 1181s
+[fold 2] it 5000/8894 loss 0.3679 lr 2.19e-04 1370s
+[fold 3] it 4250/8088 loss 0.4242 lr 2.50e-04 1255s
+[fold 2] it 5250/8894 loss 0.3708 lr 1.97e-04 1438s
+[fold 3] it 4500/8088 loss 0.4054 lr 2.25e-04 1328s
+[fold 2] it 5500/8894 loss 0.3741 lr 1.76e-04 1506s
+[fold 3] it 4750/8088 loss 0.3859 lr 2.01e-04 1402s
+[fold 2] it 5750/8894 loss 0.3720 lr 1.55e-04 1574s
+[fold 3] it 5000/8088 loss 0.3874 lr 1.77e-04 1475s
+[fold 2] it 6000/8894 loss 0.3660 lr 1.35e-04 1642s
+[fold 3] it 5250/8088 loss 0.3838 lr 1.54e-04 1548s
+[fold 2] it 6250/8894 loss 0.3696 lr 1.16e-04 1711s
+[fold 3] it 5500/8088 loss 0.3854 lr 1.32e-04 1622s
+[fold 2] it 6500/8894 loss 0.3498 lr 9.81e-05 1779s
+[fold 3] it 5750/8088 loss 0.3718 lr 1.11e-04 1695s
+[fold 2] it 6750/8894 loss 0.3604 lr 8.15e-05 1847s
+[fold 2] it 7000/8894 loss 0.3639 lr 6.65e-05 1916s
+[fold 3] it 6000/8088 loss 0.3870 lr 9.20e-05 1768s
+[fold 2] it 7250/8894 loss 0.3467 lr 5.30e-05 1984s
+[fold 3] it 6250/8088 loss 0.3653 lr 7.44e-05 1841s
+[fold 2] it 7500/8894 loss 0.3580 lr 4.12e-05 2052s
+[fold 3] it 6500/8088 loss 0.3684 lr 5.86e-05 1914s
+[fold 2] it 7750/8894 loss 0.3521 lr 3.11e-05 2120s
+[fold 3] it 6750/8088 loss 0.3653 lr 4.49e-05 1987s
+[fold 2] it 8000/8894 loss 0.3513 lr 2.30e-05 2188s
+[fold 3] it 7000/8088 loss 0.3645 lr 3.33e-05 2060s
+[fold 2] it 8250/8894 loss 0.3539 lr 1.68e-05 2256s
+[fold 3] it 7250/8088 loss 0.3596 lr 2.39e-05 2134s
+[fold 2] it 8500/8894 loss 0.3527 lr 1.25e-05 2324s
+[fold 3] it 7500/8088 loss 0.3569 lr 1.69e-05 2207s
+[fold 2] it 8750/8894 loss 0.3503 lr 1.03e-05 2392s
+[fold 3] it 7750/8088 loss 0.3635 lr 1.23e-05 2280s
+[fold 2] trained 8894 iterations in 2431s, saved unet_resnet34_fold2.pt
+[fold 3] it 8000/8088 loss 0.3600 lr 1.02e-05 2354s
+[fold 2] out-of-fold maps: 145 frames, pixel Dice@0.5 0.6925
+[fold 3] trained 8088 iterations in 2380s, saved unet_resnet34_fold3.pt
+[fold 2] test maps: 180 frames, total 2601s
+[   5474s] fold 2 finished
+[   5474s] started fold 4 on gpu 0
+[fold 3] out-of-fold maps: 140 frames, pixel Dice@0.5 0.7140
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[fold 4] 3.68 it/s -> 8833 iterations planned
+[fold 4] it 250/8833 loss 1.3041 lr 4.17e-04 69s
+[fold 3] test maps: 180 frames, total 2560s
+[   5594s] fold 3 finished
+[fold 4] it 500/8833 loss 1.0736 lr 4.99e-04 138s
+[fold 4] it 750/8833 loss 0.8846 lr 4.97e-04 206s
+[fold 4] it 1000/8833 loss 0.6749 lr 4.92e-04 275s
+[fold 4] it 1250/8833 loss 0.5603 lr 4.85e-04 344s
+[fold 4] it 1500/8833 loss 0.5001 lr 4.77e-04 412s
+[fold 4] it 1750/8833 loss 0.4891 lr 4.66e-04 481s
+[fold 4] it 2000/8833 loss 0.4845 lr 4.54e-04 550s
+[fold 4] it 2250/8833 loss 0.4766 lr 4.40e-04 618s
+[fold 4] it 2500/8833 loss 0.4766 lr 4.24e-04 687s
+[fold 4] it 2750/8833 loss 0.4671 lr 4.07e-04 756s
+[fold 4] it 3000/8833 loss 0.4452 lr 3.89e-04 825s
+[fold 4] it 3250/8833 loss 0.4210 lr 3.69e-04 893s
+[fold 4] it 3500/8833 loss 0.4062 lr 3.49e-04 962s
+[fold 4] it 3750/8833 loss 0.4147 lr 3.28e-04 1030s
+[fold 4] it 4000/8833 loss 0.4221 lr 3.06e-04 1098s
+[fold 4] it 4250/8833 loss 0.4060 lr 2.84e-04 1166s
+[fold 4] it 4500/8833 loss 0.4066 lr 2.61e-04 1235s
+[fold 4] it 4750/8833 loss 0.4065 lr 2.39e-04 1303s
+[fold 4] it 5000/8833 loss 0.3913 lr 2.16e-04 1371s
+[fold 4] it 5250/8833 loss 0.3903 lr 1.94e-04 1439s
+[fold 4] it 5500/8833 loss 0.3723 lr 1.73e-04 1507s
+[fold 4] it 5750/8833 loss 0.3757 lr 1.52e-04 1576s
+[fold 4] it 6000/8833 loss 0.3616 lr 1.32e-04 1644s
+[fold 4] it 6250/8833 loss 0.3682 lr 1.13e-04 1712s
+[fold 4] it 6500/8833 loss 0.3687 lr 9.50e-05 1780s
+[fold 4] it 6750/8833 loss 0.3725 lr 7.86e-05 1849s
+[fold 4] it 7000/8833 loss 0.3712 lr 6.38e-05 1917s
+[fold 4] it 7250/8833 loss 0.3685 lr 5.05e-05 1985s
+[fold 4] it 7500/8833 loss 0.3690 lr 3.90e-05 2053s
+[fold 4] it 7750/8833 loss 0.3646 lr 2.93e-05 2121s
+[fold 4] it 8000/8833 loss 0.3625 lr 2.15e-05 2190s
+[fold 4] it 8250/8833 loss 0.3502 lr 1.56e-05 2258s
+[fold 4] it 8500/8833 loss 0.3618 lr 1.19e-05 2326s
+[fold 4] it 8750/8833 loss 0.3628 lr 1.01e-05 2395s
+[fold 4] trained 8833 iterations in 2417s, saved unet_resnet34_fold4.pt
+[fold 4] out-of-fold maps: 142 frames, pixel Dice@0.5 0.7094
+[fold 4] test maps: 180 frames, total 2585s
+[   8069s] fold 4 finished
+[   8070s] decision layer: scoring candidates on 707 out-of-fold frames
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.99, 'min_area': 320, 'min_mean': 0.85, 'pq': 0.42404, 'sq': 0.6771, 'tp': np.float64(5136.0), 'fp': np.float64(3068.0), 'fn': np.float64(3063.0)} [0.4222, 0.4428, 0.4225, 0.4104, 0.4226]
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 320, 'min_mean': 0.85, 'pq': 0.42396, 'sq': 0.6771, 'tp': np.float64(5136.0), 'fp': np.float64(3071.0), 'fn': np.float64(3063.0)} [0.422, 0.4428, 0.4225, 0.4101, 0.4226]
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.7, 'min_area': 320, 'min_mean': 0.85, 'pq': 0.42396, 'sq': 0.6771, 'tp': np.float64(5136.0), 'fp': np.float64(3071.0), 'fn': np.float64(3063.0)} [0.422, 0.4428, 0.4225, 0.4101, 0.4226]
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.85, 'min_area': 320, 'min_mean': 0.85, 'pq': 0.42396, 'sq': 0.6771, 'tp': np.float64(5136.0), 'fp': np.float64(3071.0), 'fn': np.float64(3063.0)} [0.422, 0.4428, 0.4225, 0.4101, 0.4226]
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.95, 'min_area': 320, 'min_mean': 0.85, 'pq': 0.42396, 'sq': 0.6771, 'tp': np.float64(5136.0), 'fp': np.float64(3071.0), 'fn': np.float64(3063.0)} [0.422, 0.4428, 0.4225, 0.4101, 0.4226]
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.99, 'min_area': 200, 'min_mean': 0.85, 'pq': 0.42328, 'sq': 0.677, 'tp': np.float64(5179.0), 'fp': np.float64(3189.0), 'fn': np.float64(3020.0)} [0.422, 0.443, 0.4215, 0.4103, 0.4198]
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.99, 'min_area': 120, 'min_mean': 0.85, 'pq': 0.42323, 'sq': 0.677, 'tp': np.float64(5179.0), 'fp': np.float64(3191.0), 'fn': np.float64(3020.0)} [0.422, 0.443, 0.4215, 0.4103, 0.4195]
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.99, 'min_area': 60, 'min_mean': 0.85, 'pq': 0.42321, 'sq': 0.677, 'tp': np.float64(5179.0), 'fp': np.float64(3192.0), 'fn': np.float64(3020.0)} [0.422, 0.443, 0.4214, 0.4103, 0.4195]
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.5, 'min_area': 200, 'min_mean': 0.85, 'pq': 0.4232, 'sq': 0.677, 'tp': np.float64(5180.0), 'fp': np.float64(3195.0), 'fn': np.float64(3019.0)} [0.4215, 0.4433, 0.4215, 0.4101, 0.4198]
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.7, 'min_area': 200, 'min_mean': 0.85, 'pq': 0.4232, 'sq': 0.677, 'tp': np.float64(5180.0), 'fp': np.float64(3195.0), 'fn': np.float64(3019.0)} [0.4215, 0.4433, 0.4215, 0.4101, 0.4198]
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.85, 'min_area': 200, 'min_mean': 0.85, 'pq': 0.4232, 'sq': 0.677, 'tp': np.float64(5180.0), 'fp': np.float64(3195.0), 'fn': np.float64(3019.0)} [0.4215, 0.4433, 0.4215, 0.4101, 0.4198]
+[   8440s] rule {'t_lo': 0.25, 't_hi': 0.95, 'min_area': 200, 'min_mean': 0.85, 'pq': 0.4232, 'sq': 0.677, 'tp': np.float64(5180.0), 'fp': np.float64(3195.0), 'fn': np.float64(3019.0)} [0.4215, 0.4433, 0.4215, 0.4101, 0.4198]
+[   8507s] submission.csv: 1151 filaments on 176/180 frames; out-of-fold PQ 0.4240 with rule 0.25/0.99/320/0.85
+[   8507s] all done
